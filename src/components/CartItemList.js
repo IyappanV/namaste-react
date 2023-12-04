@@ -1,12 +1,12 @@
 import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
-import { addItem } from "../utils/cartSlice";
+import { removeItem } from "../utils/cartSlice";
 
-const ItemList = ({ items }) => {
+const CartItemList = ({ items }) => {
   const dispatch = useDispatch();
 
   const handleAddItem = (item) => {
-    dispatch(addItem(item));
+    dispatch(removeItem());
   };
   return (
     <div>
@@ -34,7 +34,7 @@ const ItemList = ({ items }) => {
                 className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg"
                 onClick={() => handleAddItem(item)}
               >
-                Add +
+                Remove -
               </button>
             </div>
             <img src={CDN_URL + item.card.info.imageId} className="w-full" />
@@ -45,4 +45,4 @@ const ItemList = ({ items }) => {
   );
 };
 
-export default ItemList;
+export default CartItemList;
